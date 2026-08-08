@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para ti</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #ffe0ec, #fff5f8);
+    color: #4a2c3a;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 15px;
+  }
+
+  #sobre-screen {
+    text-align: center;
+  }
+  #sobre {
+    width: 220px;
+    height: 150px;
+    background: #f6c6d8;
+    border-radius: 8px;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transition: transform 0.3s;
+    margin: 30px auto;
+  }
+  #sobre:hover { transform: scale(1.05); }
+  #sobre::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 0; height: 0;
+    border-left: 110px solid transparent;
+    border-right: 110px solid transparent;
+    border-top: 75px solid #f2a6c4;
+  }
+  #sobre-screen h1 { font-size: 1.5rem; margin-bottom: 10px; }
+  #sobre-screen p.hint { margin-top: 20px; font-size: 0.9rem; opacity: 0.7; }
+
+  #carta {
+    display: none;
+    max-width: 560px;
+    background: #fffaf9;
+    border-radius: 16px;
+    padding: 40px 35px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    animation: aparecer 0.6s ease;
+  }
+  @keyframes aparecer {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  #carta h2 {
+    text-align: center;
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+    color: #d1487a;
+  }
+  #carta .mensaje {
+    line-height: 1.8;
+    font-size: 1.05rem;
+    white-space: pre-line;
+  }
+  #carta .firma {
+    text-align: right;
+    margin-top: 30px;
+    font-style: italic;
+    opacity: 0.8;
+  }
+</style>
+</head>
+<body>
+
+<!-- https://open.spotify.com/track/7IL8PSVwLOJxqYne6azxQv?si=UOq4mBg5TpuZG8owPCDUsg&utm_source=copy-link&rowId=a7bd9677533cc744 -->
+<audio id="musica" src="music.mp3" loop></audio>
+
+<div id="sobre-screen">
+  <h1>Te hice una pequeña sorpresa amor</h1>
+  <div id="sobre" onclick="abrirCarta()"></div>
+  <p class="hint">(toca el sobre)</p>
+</div>
+
+<div id="carta">
+  <h2>Para Joel💗</h2>
+  <div class="mensaje">Hola corazón de melón, no soy buena expresando lo que siento pero lo quiero intentar por usted. Quiero que sepa que el amor que le tengo es más grande que cualquier cosa, estar con usted me hace tan feliz que no tengo palabras suficientes para explicarlo, espero nunca llegue a dudar de el amor tan inmenso que le tengo, porque si lo hace vamos a tener problemas. Me encanta todo de usted, sos ojos me enamoraron desde que los vi, su forma de ser me atrapó desde el primer momento, de verdad amo cada parte de usted, estoy enamorada hasta de su risa y sus chistes malos aunque siempre me hacen reír. Nunca pensé conectar tan rápido con alguien y sentirme así de cómoda siendo yo misma con usted, me hace muy feliz saber que podemos burlarnos juntos de los argentinos JAHAJAAH. En fin, espero me deje amarlo por mucho tiempo porque quiero estar siempre para usted, en las buenas y en las malas, que aunque se aleje de mi sepa que yo siempre voy a volver. Lo amo con todo mi corazón Joel, nunca dude de eso.</div>
+  <p class="firma">— eli<3</p>
+</div>
+
+<script>
+function abrirCarta() {
+  document.getElementById('sobre-screen').style.display = 'none';
+  document.getElementById('carta').style.display = 'block';
+  const musica = document.getElementById('musica');
+  musica.play().catch(() => {}); // algunos navegadores bloquean autoplay sin interacción
+}
+</script>
+
+</body>
+</html>
